@@ -35,24 +35,12 @@ See this for further reference on `docker-compose`, https://docs.docker.com/comp
 If you want to install themes or plugins during the website setup, edit the `docker-compose.yml` file and map the files in the WordPress' volume.
 
 For example, if I were to install Divi, which is a theme, I would add the following,  
-`- ./themes/Divi:/var/www/html/wp-content/themes/Divi`
+`- ./themes/:/var/www/html/wp-content/themes/`
 
 And if I were to install Sucuri Scanner, which is a plugin, I would add,
 
-`- ./plugins/sucuri-scanner:/var/www/html/wp-content/plugins/sucuri-scanner`
+`- ./plugins/:/var/www/html/wp-content/plugins/`
 
 Here, `./themes/` and `./plugins/` are local directories where you I would paste the files. You can create different directories on local to store the files. However, rest of the part for the mapping needs follow the directory structure of WordPress.
 
 You will find commented out plugin, theme installation in the `docker-compose.yml`, you can remove those, add your own, or edit those. I left those as is because my frequent use of those.
-
-## Acknowledgement
-
----
-
-This is not production ready, I prefer this one for local development only.
-
-My [`docker-compose.yml`](https://github.com/IamLizu/wp-docker/blob/master/docker-compose.yml) is an improved version of [Brad's `docker-compose.yml` for WordPress](https://gist.github.com/bradtraversy/faa8de544c62eef3f31de406982f1d42). (Kudos to [Brad Traversy](https://github.com/bradtraversy/) for his contributions to the community.)
-
-As of creating this repo, if you use Brad's version of the file, you may face database connection issue if your database name is anything else that `wordpress`.
-
-Keep learning, and create your own awesome compose file. Don't forget to share it [here](https://github.com/IamLizu/wp-docker/discussions/1). Let's talk about it!
